@@ -11,7 +11,7 @@ export function App() {
 
   return (
     <>
-    <Heading/>
+    <Heading attr={123}  attr2 = 'String'>Olá mundo! 1</Heading>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque,
         consectetur nulla. Voluptatem cumque ducimus saepe obcaecati corrupti
