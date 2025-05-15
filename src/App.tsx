@@ -25,7 +25,7 @@ export function App() {
       <Container>
         <form className='form' action=''>
           <div className='formRow'>
-            <DefaltInput id='meuInput' type='text' />
+            <DefaltInput labelText='task' id='meuInput' type='text' />
           </div>
 
           <div className='formRow'>
