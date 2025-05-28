@@ -4,8 +4,13 @@ import { DefaltButton } from "../DefaultButton";
 import { DefaltInput } from "../DefaultInput";
 
 export function MainForm() {
+  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log("Deu Certo");
+  }
+
   return (
-    <form className='form' action=''>
+    <form onSubmit={handleCreateNewTask} className='form' action=''>
       <div className='formRow'>
         <DefaltInput
           labelText='task'
