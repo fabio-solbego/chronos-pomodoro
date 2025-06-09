@@ -1,4 +1,4 @@
-import { PlayCircleIcon } from "lucide-react";
+import { PlayCircleIcon, StopCircleIcon } from "lucide-react";
 import { Cycles } from "../Cycles";
 import { DefaltButton } from "../DefaultButton";
 import { DefaltInput } from "../DefaultInput";
@@ -52,6 +52,17 @@ export function MainForm() {
     });
   }
 
+  function handleInterrupteTask() {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: "00:00",
+      };
+    });
+  }
+
   return (
     <form onSubmit={handleCreateNewTask} className='form' action=''>
       <div className='formRow'>
@@ -61,6 +72,7 @@ export function MainForm() {
           type='text'
           placeholder='Digite algo'
           ref={taskNameInput}
+          disabled={!!state.activeTask}
         />
       </div>
 
@@ -68,12 +80,30 @@ export function MainForm() {
         <p>próximo intervalo é de 25 min</p>
       </div>
 
+      {state.currentCycle > 0 && (
+        <div className='formRow'>
+          <Cycles />
+        </div>
+      )}
       <div className='formRow'>
-        <Cycles />
-      </div>
-
-      <div className='formRow'>
-        <DefaltButton icon={<PlayCircleIcon />} />
+        {!state.activeTask && (
+          <DefaltButton
+            aria-label='Iniciar noca tarefa'
+            title='Iniciar nova tarefa'
+            type='submit'
+            icon={<PlayCircleIcon />}
+          />
+        )}
+        {!!state.activeTask && (
+          <DefaltButton
+            aria-label='Interromper tarefa'
+            title='Interromper tarefa'
+            type='button'
+            color='red'
+            icon={<StopCircleIcon />}
+            onClick={handleInterrupteTask}
+          />
+        )}
       </div>
     </form>
   );
