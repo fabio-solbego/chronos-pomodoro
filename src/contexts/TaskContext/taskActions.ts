@@ -12,11 +12,10 @@ export type TaskActionsWithPayload =
       payload: TaskModel;
     }
   | {
-      type: TaskActionTypes.INTERRUPT_TASK;
-      payload: TaskModel;
+      type: TaskActionTypes.RESET_STATE;
     }
   | {
-      type: TaskActionTypes.RESET_STATE;
+      type: TaskActionTypes.INTERRUPT_TASK;
     };
 
 export type TaskActionsWithoutPayload = {
